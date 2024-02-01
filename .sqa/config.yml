@@ -1,0 +1,42 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/Deltares/hydromt_sfincs:
+      branch: main
+      repo: https://github.com/Deltares/hydromt_sfincs
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.0.0
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/Deltares/hydromt_sfincs git:
+        commands:
+        - /usr/bin/env sh .sqa/script.shaggy-myrtle-chinchilla.sh
+        container: qc.acc_baggy-red-bracke
+  QC.Doc:
+    repos:
+      github.com/Deltares/hydromt_sfincs find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.snazzy-violet-saola.sh
+        container: qc.doc_skanky-orange-mule
+      github.com/Deltares/hydromt_sfincs git:
+        commands:
+        - /usr/bin/env sh .sqa/script.boozy-orchid-tang.sh
+        container: qc.doc_lumpy-denim-flamingo
+  QC.Lic:
+    repos:
+      github.com/Deltares/hydromt_sfincs licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.snoopy-asparagus-bonobo.sh
+        container: qc.lic_chewy-ecru-abyssinian
+  QC.Ver:
+    repos:
+      github.com/Deltares/hydromt_sfincs get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.messy-emerald-sloth.sh
+        container: qc.ver_ugly-silver-barb
+timeout: 5400
