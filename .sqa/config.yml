@@ -5,7 +5,7 @@ config:
       branch: main
       repo: https://github.com/Deltares/hydromt_sfincs
     github.com/EOSC-synergy/sqaaas-tooling:
-      branch: release/2.0.0
+      branch: main
       repo: https://github.com/EOSC-synergy/sqaaas-tooling
 environment:
   JPL_DOCKERFORCEBUILD: enabled
@@ -15,28 +15,58 @@ sqa_criteria:
     repos:
       github.com/Deltares/hydromt_sfincs git:
         commands:
-        - /usr/bin/env sh .sqa/script.shaggy-myrtle-chinchilla.sh
-        container: qc.acc_baggy-red-bracke
+        - /usr/bin/env sh .sqa/script.skinny-azure-stoat.sh
+        container: qc.acc_tasty-saffron-heron
   QC.Doc:
     repos:
       github.com/Deltares/hydromt_sfincs find_doc_files.py:
         commands:
-        - /usr/bin/env sh .sqa/script.snazzy-violet-saola.sh
-        container: qc.doc_skanky-orange-mule
+        - /usr/bin/env sh .sqa/script.randy-charcoal-mule.sh
+        container: qc.doc_homely-mauve-cow
       github.com/Deltares/hydromt_sfincs git:
         commands:
-        - /usr/bin/env sh .sqa/script.boozy-orchid-tang.sh
-        container: qc.doc_lumpy-denim-flamingo
+        - /usr/bin/env sh .sqa/script.clammy-purple-bombay.sh
+        container: qc.doc_ready-auburn-fowl
+      github.com/Deltares/hydromt_sfincs markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.slaphappy-rose-camel.sh
+        container: qc.doc_slaphappy-denim-alligator
+      github.com/Deltares/hydromt_sfincs restructuredtext-lint:
+        commands:
+        - /usr/bin/env sh .sqa/script.messy-orchid-iguana.sh
+        container: qc.doc_greasy-corn-dragonfly
   QC.Lic:
     repos:
       github.com/Deltares/hydromt_sfincs licensee:
         commands:
-        - /usr/bin/env sh .sqa/script.snoopy-asparagus-bonobo.sh
-        container: qc.lic_chewy-ecru-abyssinian
+        - /usr/bin/env sh .sqa/script.flabby-amethyst-antelope.sh
+        container: qc.lic_leaky-chestnut-jaguar
+  QC.Sec:
+    repos:
+      github.com/Deltares/hydromt_sfincs bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.shaky-ivory-axolotl.sh
+        container: qc.sec_leaky-charcoal-civet
+  QC.Sty:
+    repos:
+      github.com/Deltares/hydromt_sfincs flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.crabby-beige-emu.sh
+        container: qc.sty_freaky-brass-gerbil
+      github.com/Deltares/hydromt_sfincs jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.hasty-vermilion-salamander.sh
+        container: qc.sty_snazzy-dandelion-abyssinian
+  QC.Uni:
+    repos:
+      github.com/Deltares/hydromt_sfincs pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.foggy-yellow-albatross.sh
+        container: qc.uni_foggy-amaranth-rabbit
   QC.Ver:
     repos:
       github.com/Deltares/hydromt_sfincs get_git_tags.py:
         commands:
-        - /usr/bin/env sh .sqa/script.messy-emerald-sloth.sh
-        container: qc.ver_ugly-silver-barb
+        - /usr/bin/env sh .sqa/script.snazzy-olive-tetra.sh
+        container: qc.ver_skinny-mauve-crab
 timeout: 5400
